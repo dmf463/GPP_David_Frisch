@@ -18,10 +18,13 @@ public class ShipController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //move stuff
         Move(Vector3.up, upKey);
         Move(Vector3.down, downKey);
         Move(Vector3.left, leftKey);
         Move(Vector3.right, rightKey);
+
+        //shoot stuff
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<BasicGun>().Fire(Vector3.up, Vector3.zero);
