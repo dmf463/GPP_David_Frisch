@@ -27,7 +27,7 @@ public class ShipController : MonoBehaviour {
         //shoot stuff
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GetComponent<BasicGun>().Fire(Vector3.up, Vector3.zero);
+            GetComponent<BasicGun>().Fire(Vector3.right, new Vector3(1, 0, 0));
         }
 
     }
