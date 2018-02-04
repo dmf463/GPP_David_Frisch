@@ -5,10 +5,19 @@ using UnityEngine;
 
 public class SmallRat : EnemySandbox
 {
-    
-    public override void Move()
+    public override void Initialize()
     {
-        enemySpeed = 10;
-        base.MoveLeft();
+        MoveLeft(2);
+        OnDeath(Death);
+    }
+
+    void Update()
+    {
+        Initialize();
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }
