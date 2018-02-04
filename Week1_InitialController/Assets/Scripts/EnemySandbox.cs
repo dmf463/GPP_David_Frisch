@@ -52,6 +52,7 @@ public abstract class EnemySandbox : MonoBehaviour {
         if (isDead)
         {
             onDeath();
+            Destroy(gameObject);
         }
     }
 

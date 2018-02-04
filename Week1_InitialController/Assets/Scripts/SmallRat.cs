@@ -18,6 +18,6 @@ public class SmallRat : EnemySandbox
 
     private void Death()
     {
-        Destroy(gameObject);
+        Debug.Log("basic death");
     }
 }

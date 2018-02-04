@@ -21,6 +21,5 @@ public class DeterminedRat : EnemySandbox {
         base.SpawnAnotherEnemy("SmallRat");
         base.SpawnAnotherEnemy("SmallRat");
         base.SpawnAnotherEnemy("SmallRat");
-        Destroy(gameObject);
     }
 }
