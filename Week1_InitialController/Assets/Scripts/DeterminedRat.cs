@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class DeterminedRat : EnemySandbox {
 
-    public override void Initialize()
+    public override void OnUpdate()
     {
         MoveTowardsPlayer(1);
         OnDeath(Repopulate);
     }
 
-    // Update is called once per frame
-    void Update () {
-        Initialize();
-	}
-
     void Repopulate()
     {
-        base.SpawnAnotherEnemy("SmallRat");
-        base.SpawnAnotherEnemy("SmallRat");
-        base.SpawnAnotherEnemy("SmallRat");
+        Vector3 spawnPos1 = new Vector3(transform.position.x + UnityEngine.Random.Range(- 2, 2), transform.position.y, transform.position.z);
+        Vector3 spawnPos2 = new Vector3(transform.position.x + UnityEngine.Random.Range(-2, 2), transform.position.y, transform.position.z);
+        Vector3 spawnPos3 = new Vector3(transform.position.x + UnityEngine.Random.Range(-2, 2), transform.position.y, transform.position.z);
+        base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos1);
+        base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos2);
+        base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos3);
+        Destroy(gameObject);
     }
 }

@@ -25,6 +25,7 @@ public class ShipController : MonoBehaviour {
         Move(Vector3.right, rightKey);
 
         //shoot stuff
+        //maybe change to shooting with mouse and shoot in direction of mouse click
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<BasicGun>().Fire(Vector3.right, new Vector3(1, 0, 0));

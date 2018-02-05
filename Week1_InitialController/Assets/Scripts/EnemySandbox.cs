@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EnemySandbox : MonoBehaviour {
 
-    public abstract void Initialize();
+    public abstract void OnUpdate();
     GameObject player;
     public bool isDead;
     public delegate void MyDelegate();
@@ -41,10 +41,10 @@ public abstract class EnemySandbox : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, enemySpeed * Time.deltaTime);
     }
 
-    protected virtual void SpawnAnotherEnemy(string enemyName)
+    protected virtual void SpawnAnotherEnemy(EnemyTypes enemyType, Vector3 pos) //change to spawn enemy at point and pass a vector3
     {
-        GameObject newRat = Instantiate(Resources.Load("Prefabs/" + enemyName)) as GameObject;
-        newRat.transform.position = new Vector3(transform.position.x, transform.position.y + Random.Range(-2, 2), transform.position.z);
+        GameObject newRat = Instantiate(Services.EnemyManager.enemyDict[enemyType]) as GameObject;
+        newRat.transform.position = pos;
     }
 
     protected virtual void OnDeath(MyDelegate onDeath)
@@ -57,8 +57,4 @@ public abstract class EnemySandbox : MonoBehaviour {
     }
 
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
 }

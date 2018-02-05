@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class SmallRat : EnemySandbox
 {
-    public override void Initialize()
+    public override void OnUpdate()
     {
         MoveLeft(2);
         OnDeath(Death);
-    }
-
-    void Update()
-    {
-        Initialize();
     }
 
     private void Death()
