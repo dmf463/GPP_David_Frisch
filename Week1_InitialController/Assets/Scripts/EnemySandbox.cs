@@ -44,6 +44,7 @@ public abstract class EnemySandbox : MonoBehaviour {
     protected virtual void SpawnAnotherEnemy(EnemyTypes enemyType, Vector3 pos) //change to spawn enemy at point and pass a vector3
     {
         GameObject newRat = Instantiate(Services.EnemyManager.enemyDict[enemyType]) as GameObject;
+        Services.EnemyManager.enemies.Add(newRat);
         newRat.transform.position = pos;
     }
 
@@ -52,7 +53,7 @@ public abstract class EnemySandbox : MonoBehaviour {
         if (isDead)
         {
             onDeath();
-            Destroy(gameObject);
+            Services.EnemyManager.DestroyEnemy(gameObject);
         }
     }
 

@@ -10,6 +10,7 @@ public class EnemyManager {
      * spawn and destory enemies
      */
     public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemiesToDestroy = new List<GameObject>();
     public Dictionary<EnemyTypes, GameObject> enemyDict = new Dictionary<EnemyTypes, GameObject>();
     public void IntitializeEnemies()
     {
@@ -33,11 +34,21 @@ public class EnemyManager {
 
     public void UpdateEnemy()
     {
-        foreach(GameObject enemy in enemies)
+        for (int i = enemies.Count - 1; i >= 0; i--)
         {
-            //need to add a destory list
-            enemy.GetComponent<EnemySandbox>().OnUpdate();
+            enemies[i].GetComponent<EnemySandbox>().OnUpdate();
         }
+        for (int i = enemiesToDestroy.Count; i < 0; i--)
+        {
+            DestroyEnemy(enemiesToDestroy[i]);
+        }
+        enemiesToDestroy.Clear();
+    }
+
+    public void DestroyEnemy(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+        GameObject.Destroy(enemy);
     }
 
     public void SpawnSmallRat()
