@@ -156,6 +156,16 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 212202285324254760, guid: 94cd74a1df36f594c944425848208a6c,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50833530004078048, guid: 94cd74a1df36f594c944425848208a6c,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94cd74a1df36f594c944425848208a6c, type: 2}
   m_IsPrefabParent: 0

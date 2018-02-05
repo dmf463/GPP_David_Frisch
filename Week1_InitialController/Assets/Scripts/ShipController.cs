@@ -26,9 +26,17 @@ public class ShipController : MonoBehaviour {
 
         //shoot stuff
         //maybe change to shooting with mouse and shoot in direction of mouse click
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GetComponent<BasicGun>().Fire(Vector3.right, new Vector3(1, 0, 0));
+        //}
+        if (Input.GetMouseButtonDown(0))
         {
-            GetComponent<BasicGun>().Fire(Vector3.right, new Vector3(1, 0, 0));
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 modPos;
+            if (GetComponent<SpriteRenderer>().flipX == true || mousePos.x < transform.position.x) modPos = Vector3.left;
+            else modPos = Vector3.right;
+            GetComponent<BasicGun>().Fire(mousePos, modPos);
         }
 
     }
@@ -37,6 +45,8 @@ public class ShipController : MonoBehaviour {
     {
         if (Input.GetKey(key))
         {
+            if (key == leftKey) GetComponent<SpriteRenderer>().flipX = true;
+            else if (key == rightKey) GetComponent<SpriteRenderer>().flipX = false;
             transform.Translate(dir * speed * Time.deltaTime);
         }
     }

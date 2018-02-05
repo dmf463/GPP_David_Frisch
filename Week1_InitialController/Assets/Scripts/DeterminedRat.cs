@@ -17,9 +17,9 @@ public class DeterminedRat : EnemySandbox {
 
     void Repopulate()
     {
-        Vector3 spawnPos1 = new Vector3(transform.position.x + UnityEngine.Random.Range(- 2, 2), transform.position.y, transform.position.z);
-        Vector3 spawnPos2 = new Vector3(transform.position.x + UnityEngine.Random.Range(-2, 2), transform.position.y, transform.position.z);
-        Vector3 spawnPos3 = new Vector3(transform.position.x + UnityEngine.Random.Range(-2, 2), transform.position.y, transform.position.z);
+        Vector3 spawnPos1 = new Vector3(transform.position.x + UnityEngine.Random.Range(- 3, 3), transform.position.y, transform.position.z);
+        Vector3 spawnPos2 = new Vector3(transform.position.x + UnityEngine.Random.Range(-3, 3), transform.position.y, transform.position.z);
+        Vector3 spawnPos3 = new Vector3(transform.position.x + UnityEngine.Random.Range(-3, 3), transform.position.y, transform.position.z);
         base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos1);
         base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos2);
         base.SpawnAnotherEnemy(EnemyTypes.SmallRat, spawnPos3);
