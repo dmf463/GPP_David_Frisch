@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class SmallRat : EnemySandbox
 {
+    public override void Init()
+    {
+        enemySpeed = UnityEngine.Random.Range(1, 5);
+    }
+
     public override void OnUpdate()
     {
-        MoveLeft(2);
+        MoveLeft(enemySpeed);
         OnDeath(Death);
     }
 

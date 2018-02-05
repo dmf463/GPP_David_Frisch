@@ -16,8 +16,12 @@ public class EnemyManager {
     {
         enemyDict.Add(EnemyTypes.SmallRat, Services.PrefabDB.SmallRat as GameObject);
         enemyDict.Add(EnemyTypes.DeterminedRat, Services.PrefabDB.DeterminedRat as GameObject);
-        GameObject[] findEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in findEnemies) enemies.Add(enemy);
+        for (int i = 0; i < 5; i++)
+        {
+            float randomNum = Random.Range(0, 100);
+            if (randomNum > 50) SpawnSmallRat();
+            else SpawnDeterminedRat();
+        }
     }
 
     public GameObject GetSmallRat()
@@ -53,7 +57,20 @@ public class EnemyManager {
 
     public void SpawnSmallRat()
     {
+        GameObject rat = GameObject.Instantiate(GetSmallRat(), GetSpawnPoint(), Quaternion.identity) as GameObject;
+        enemies.Add(rat);
+    }
 
+    public void SpawnDeterminedRat()
+    {
+        GameObject rat = GameObject.Instantiate(GetDeterminedRat(), GetSpawnPoint(), Quaternion.identity) as GameObject;
+        enemies.Add(rat);
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        float xMod = Random.Range(-2, 2);
+        return GameObject.Find("SpawnPoint").transform.position + new Vector3(xMod, 0, 0);
     }
 
 }

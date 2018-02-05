@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class DeterminedRat : EnemySandbox {
 
+    public override void Init()
+    {
+        enemySpeed = UnityEngine.Random.Range(1, 5);
+    }
     public override void OnUpdate()
     {
-        MoveTowardsPlayer(1);
+        MoveTowardsPlayer(enemySpeed);
         OnDeath(Repopulate);
     }
 

@@ -4,11 +4,18 @@ using UnityEngine;
 
 public abstract class EnemySandbox : MonoBehaviour {
 
+    public abstract void Init();
     public abstract void OnUpdate();
+    public float enemySpeed;
     GameObject player;
     public bool isDead;
     public delegate void MyDelegate();
     MyDelegate myDelegate;
+
+    void Start()
+    {
+        Init();
+    }
 
     protected virtual void MoveLeft(float enemySpeed)
     {
