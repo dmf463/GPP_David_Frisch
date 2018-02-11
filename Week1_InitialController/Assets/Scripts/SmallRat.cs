@@ -7,12 +7,15 @@ public class SmallRat : EnemySandbox
 {
     public override void Init()
     {
-        enemySpeed = UnityEngine.Random.Range(1, 5);
+        enemySpeed = UnityEngine.Random.Range(5, 8);
+        jumpTime = 1;
+        jumpHeight = 5;
     }
 
     public override void OnUpdate()
     {
         MoveLeft(enemySpeed);
+        Jump();
         OnDeath(Death);
     }
 

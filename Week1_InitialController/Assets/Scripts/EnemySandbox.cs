@@ -11,10 +11,29 @@ public abstract class EnemySandbox : MonoBehaviour {
     public bool isDead;
     public delegate void MyDelegate();
     MyDelegate myDelegate;
+    public bool isJumping;
+    public float jumpHeight;
+    public float jumpTime;
 
     void Start()
     {
         Init();
+    }
+
+    protected virtual void Jump()
+    {
+        if (!isJumping)
+        {
+            isJumping = true;
+            StartCoroutine(JumpTime(jumpTime, jumpHeight));
+        }
+    }
+
+    protected virtual IEnumerator JumpTime(float time, float jumpHeight)
+    {
+        yield return new WaitForSeconds(time);
+        GetComponent<Rigidbody2D>().AddForce(new Vector3(0, jumpHeight, 0), ForceMode2D.Impulse);
+        isJumping = false;
     }
 
     protected virtual void MoveLeft(float enemySpeed)
@@ -61,6 +80,14 @@ public abstract class EnemySandbox : MonoBehaviour {
         {
             onDeath();
             Services.EnemyManager.DestroyEnemy(gameObject);
+        }
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PizzaShop")
+        {
+            this.isDead = true;
         }
     }
 

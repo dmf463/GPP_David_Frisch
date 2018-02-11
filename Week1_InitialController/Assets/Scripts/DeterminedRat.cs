@@ -7,7 +7,7 @@ public class DeterminedRat : EnemySandbox {
 
     public override void Init()
     {
-        enemySpeed = UnityEngine.Random.Range(1, 5);
+        enemySpeed = UnityEngine.Random.Range(4, 7);
     }
     public override void OnUpdate()
     {
