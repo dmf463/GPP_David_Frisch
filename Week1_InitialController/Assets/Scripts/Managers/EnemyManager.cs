@@ -16,6 +16,7 @@ public class EnemyManager {
         enemyDict.Add(EnemyTypes.SmallRat, Services.PrefabDB.SmallRat as GameObject);
         enemyDict.Add(EnemyTypes.DeterminedRat, Services.PrefabDB.DeterminedRat as GameObject);
         SpawnWave(enemiesToSpawn);
+        Services.EventManager.Register<PlayerPoweredUp>(DebugStuff);
     }
 
     public void SpawnWave(int enemyCount)
@@ -27,6 +28,22 @@ public class EnemyManager {
             else SpawnDeterminedRat();
         }
         waveCount++;
+    }
+
+    public void DestroyEnemy(GameObject enemy)
+    {
+        Services.EventManager.Unregister<PlayerPoweredUp>(DebugStuff);
+        enemies.Remove(enemy);
+        GameObject.Destroy(enemy);
+    }
+
+    public void DebugStuff(GC.GameEvent e)
+    {
+        PlayerPoweredUp powerUp = e as PlayerPoweredUp;
+        foreach (GameObject enemy in enemies)
+        {
+            Debug.Log("My name is " + enemy.gameObject.name + " and my target is " + powerUp.player.gameObject.name);
+        }
     }
 
     public void SpawnSmallRat()
@@ -72,13 +89,4 @@ public class EnemyManager {
         enemiesToDestroy.Clear();
         if (enemies.Count == 0) SpawnWave(enemiesToSpawn);
     }
-
-    public void DestroyEnemy(GameObject enemy)
-    {
-        enemies.Remove(enemy);
-        GameObject.Destroy(enemy);
-    }
-
-
-
 }
