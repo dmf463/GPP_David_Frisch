@@ -87,6 +87,7 @@ public abstract class EnemySandbox : MonoBehaviour {
     {
         if (other.gameObject.tag == "PizzaShop")
         {
+            Services.EventManager.Fire(new PizzaShopHit());
             this.isDead = true;
         }
     }
