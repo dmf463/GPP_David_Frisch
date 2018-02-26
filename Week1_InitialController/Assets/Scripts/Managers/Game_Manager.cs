@@ -15,10 +15,7 @@ public class Game_Manager : MonoBehaviour {
         Services.PizzaShop = GameObject.Find("PizzaShop").GetComponent<PizzaShop>();
 
     }
-    void Start () {
 
-	}
-	
 	// Update is called once per frame
 	void Update () {
         Services.EnemyManager.UpdateEnemy();
